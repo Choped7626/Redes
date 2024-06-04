@@ -1,0 +1,123 @@
+----------Enviamos un ping de pc0 a pc1.----------
+    
+1. The Ping process starts the next ping request.
+2. The Ping process creates an ICMP Echo Request message and sends it to the lower process.
+3. The source IP address is not specified. The device sets it to the port's IP address.
+4. The device sets TTL in the packet header.
+5. The destination IP address is in the same subnet. The device sets the next-hop to destination.
+
+
+Tras seleccionar PC0 y PC1 con el sobre cerrado activado lo q ocurre es lo siguiente:
+PC0 genera un paquete de tipo ICMP que envía al Switch0 , este se lo envía al PC1 y cuando este lo recibe responde al Switch0 para que envíe un mensaje de confirmación al PC0. (Todos estos paquetes son del tipo ICMP)
+
+
+----------Si asignamos a pc0 la IP 192.168.6.10/24 y enviamos un ping desde pc0 a pc1 (192.168.10.11).----------
+
+1. The Ping process starts the next ping request.
+2. The Ping process creates an ICMP Echo Request message and sends it to the lower process.
+3. The source IP address is not specified. The device sets it to the port's IP address.
+4. The device sets TTL in the packet header.
+5. The destination IP address 192.168.10.11 is not in the same subnet and is not the broadcast address.
+6. The default gateway is set. The device sets the next-hop to default gateway.
+(tipo ICMP)
+
+1. The ARP process constructs a request for the target IP address.
+2. The device encapsulates the PDU into an Ethernet frame.
+(pasa a tipo ARP)
+
+El switch recibe el paquete arp y se lo envia al pc1 pero este no responde
+
+----------Si asignamos a pc0 la IP 192.168.10.10/24 y enviamos un ping desde pc0 a 192.168.10.20----------
+
+1. The Ping process starts the next ping request.
+2. The Ping process creates an ICMP Echo Request message and sends it to the lower process.
+3. The source IP address is not specified. The device sets it to the port's IP address.
+4. The destination IP address 192.168.30.20 is not in the same subnet and is not the broadcast address.
+5. The default gateway is set. The device sets the next-hop to default gateway.
+
+1. The ARP process constructs a request for the target IP address.
+2. The device encapsulates the PDU into an Ethernet frame.
+
+1. FastEthernet0/1 receives the frame.
+
+1. FastEthernet0 receives the frame.
+
+----------¿Qué sucede si asignamos a pc0 la IP 192.168.10.10/24 y enviamos un ping desde pc0 a 192.168.30.20?----------
+
+1. The Ping process starts the next ping request.
+2. The Ping process creates an ICMP Echo Request message and sends it to the lower process.
+3. The source IP address is not specified. The device sets it to the port's IP address.
+4. The destination IP address is in the same subnet. The device sets the next-hop to destination.
+
+1. The ARP process constructs a request for the target IP address.
+2. The device encapsulates the PDU into an Ethernet frame.
+
+1. FastEthernet0/1 receives the frame.
+
+1. FastEthernet0 receives the frame.
+
+1. The ARP request times out. The ARP process drops this buffered packet.
+
+1. The ARP request times out. The ARP process drops this buffered packet.
+
+----------¿Cuál es la IP del switch 0? ¿y la del switch 1?----------
+
+No tiene no?
+
+----------¿Cómo te conectarías al servidor web por IP?¿y por nombre?----------
+
+Por IP iría a desktop , web browser del pc q quiera conectar y escribiría la ip en el cuadrado de búsqueda.
+
+Por nombre nose, algo estarei facendo mal, ya me las arreglaré
+
+----------Haciendo una petición HTTP al servidor web desde pc0, ¿cuál es el puerto TCP que usa pc0 para esa comunicación?¿y el servidor web?----------
+
+El pc0 usa el puerto 80 y el servidor web el 1041
+
+----------¿Cómo se añadiría una nueva página HTML con un enlace a index.html en el servidor web?----------
+
+
+Doble clic al servidor web , vas al apartado de Services, y desde ahí a HTTP y ya puedes añadir una nueva página http
+
+----------¿Qué pasa si desconecto el servidor DNS y en el navegador de pc0 me conecto a 192.168.10.12? ¿y si me conecto a www.redes.fic.com?----------
+
+Si te conectas con la ip funciona y si lo haces con el nombre no
+
+----------Establecer la dirección del servidor DNS a 192.168.20.13 y modificar pc1 según esta nueva configuración. ¿Qué sucede si accedemos desde pc1 a http://www.redes.fic.com?¿y si nos conectamos a http://192.168.10.12?----------
+
+IDK
+
+----------¿Qué sucede al hacer un ping de pc0 a pc1?----------
+
+Funciona correctamente
+
+----------¿Qué sucede al hacer un ping desde el servidor web al servidor DNS? ¿y al  hacerlo desde el servidor web al router1? Si alguno de ellos falla, intenta solucionar el problema.----------
+
+Funciona correctamente. Funciona perfe.
+
+----------¿Qué sucede al hacer un ping de pc0 al router1? ¿y del servidor web al router0?¿por qué?----------
+
+No furrula q esta en otra red atontao y no las tiene registradas en la tabla de enrutamiento
+
+----------¿Qué IP de origen tiene el datagrama IP al salir de pc0? ¿y al salir de router0? ¿qué ha sucedido en router0 con respecto a las direcciones de la cabecera IP? ¿por qué?----------
+
+
+
+----------Desde el Web Browser de pc1 (ver figura 3), hacer una petición a http://www.redes.fic.com. Teniendo en cuenta los protocolos vistos hasta ahora en la asignatura, explicar el proceso completo hasta recibir la respuesta HTTP en pc1 ayudándose de nuevo del modo simulación. ¿Qué ocurre si la petición se envía a http://192.168.20.12? ¿qué respuesta se obtiene?----------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
